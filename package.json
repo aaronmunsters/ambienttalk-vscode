@@ -2,6 +2,7 @@
     "name": "ambienttalk",
     "publisher": "Aaron-Munsters",
     "displayName": "AmbientTalk",
+    "icon": "images/icon.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/aaronmunsters/ambienttalk-vscode"
