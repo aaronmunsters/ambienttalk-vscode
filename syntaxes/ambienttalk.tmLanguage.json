@@ -1,0 +1,217 @@
+{
+  "comment": "AmbientTalk/2 Syntax: version 0.2 - Retrieved at the bottom of this page: http://soft.vub.ac.be/amop/at/download",
+  "fileTypes": [
+    "at"
+  ],
+  "foldingStartMarker": "\\{",
+  "foldingStopMarker": "^\\s*\\}",
+  "keyEquivalent": "",
+  "name": "AmbientTalk 2",
+  "patterns": [
+    {
+      "begin": "(\\s*deftype)\\s+([a-zA-Z_?]*)?\\s*(<:)?",
+      "captures": {
+        "1": {
+          "name": "keyword.other.declaration.ambienttalk"
+        },
+        "2": {
+          "name": "entity.name.variable.ambienttalk"
+        },
+        "3": {
+          "name": "keyword.other.declaration.ambienttalk"
+        }
+      },
+      "end": ";",
+      "name": "meta.definition.type",
+      "patterns": [
+        {
+          "include": "#canArguments"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.other.declaration.ambienttalk"
+        },
+        "2": {
+          "name": "entity.name.variable.ambienttalk"
+        }
+      },
+      "match": "(\\s*def)\\s+([a-zA-Z_?]*)?\\s*(:=|;)",
+      "name": "meta.definition.variable"
+    },
+    {
+      "begin": "(\\s*def)\\s+",
+      "captures": {
+        "1": {
+          "name": "keyword.other.declaration.ambienttalk"
+        }
+      },
+      "contentName": "meta.definition.ambienttalk",
+      "end": "\\{|;",
+      "name": "meta.definition.method",
+      "patterns": [
+        {
+          "include": "#defCanonical"
+        },
+        {
+          "include": "#defKeyworded"
+        }
+      ]
+    },
+    {
+      "begin": "(\\s*def)\\s+\\[",
+      "captures": {
+        "1": {
+          "name": "keyword.other.declaration.ambienttalk"
+        }
+      },
+      "contentName": "meta.definition.ambienttalk",
+      "end": "(\\])",
+      "name": "meta.definition.multiValue",
+      "patterns": [
+        {
+          "include": "#canArguments"
+        }
+      ]
+    },
+    {
+      "begin": "(\\s*def)\\s+([a-zA-Z_?]*)\\[",
+      "captures": {
+        "1": {
+          "name": "keyword.other.declaration.ambienttalk"
+        }
+      },
+      "contentName": "meta.definition.ambienttalk",
+      "end": "(\\])",
+      "name": "meta.definition.table",
+      "patterns": [
+        {
+          "include": "#canArguments"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "variable.parameter.ambienttalk"
+        }
+      },
+      "match": "(@[a-zA-Z_?]*)",
+      "name": "meta.arguments.var-args.ambienttalk"
+    },
+    {
+      "match": "\\b((0(x|X)[0-9a-fA-F]+)|([0-9]+(\\.[0-9]+)?))\\b",
+      "name": "constant.numeric.ambienttalk"
+    },
+    {
+      "begin": "'",
+      "end": "'",
+      "name": "string.quoted.single.ambienttalk",
+      "swallow": "\\\\."
+    },
+    {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.ambienttalk",
+      "swallow": "\\\\."
+    },
+    {
+      "begin": "/\\*",
+      "captures": {
+        "0": {
+          "name": "meta.brace.comment.block.ambienttalk"
+        }
+      },
+      "end": "\\*/",
+      "name": "comment.block.ambienttalk"
+    },
+    {
+      "match": "//.*$\\n?",
+      "name": "comment.line.double-slash.ambienttalk"
+    },
+    {
+      "match": "(if|then|else|while|do|unless|foreach|in|raise|catch|using|let)+:",
+      "name": "keyword.control.ambienttalk"
+    },
+    {
+      "match": "(when|whenever|disconnected|reconnected|discovered|becomes|export|as)+:",
+      "name": "keyword.async.ambienttalk"
+    },
+    {
+      "match": "(import|exclude|alias)",
+      "name": "keyword.scope.ambienttalk"
+    },
+    {
+      "match": "(object|extend|with|share|clone|taggedAs|is|tagsOf)+:",
+      "name": "keyword.objects.ambienttalk"
+    },
+    {
+      "match": "(self|super)",
+      "name": "keyword.objects.ambienttalk"
+    },
+    {
+      "match": "(system|network|lobby|root|jlobby)",
+      "name": "support.objects.ambienttalk"
+    },
+    {
+      "match": "((mirror|reflect|mirroredBy)+:|defaultMirror)",
+      "name": "support.mop.keywords.ambienttalk"
+    },
+    {
+      "match": "\\b(addMethod|clone|defineField|grabMethod|grabField|invoke|invokeField|listMethods|newInstance|print|respondsTo|select|isExtensionOfParent)\\b(?=\\()",
+      "name": "support.mop.methods.ambienttalk"
+    },
+    {
+      "match": "\\b(base)\\b",
+      "name": "support.mop.fields.ambienttalk"
+    },
+    {
+      "match": "(!|#|\\$|%|&|\\*|\\+|\\-|/|\\^|\\\\|~|\\||<|>|=|:=|new)+",
+      "name": "keyword.operator.ambienttalk"
+    },
+    {
+      "match": "\\b(root|nil|true|false)\\b|\\b(super|self)\\b(?=\\()",
+      "name": "constant.language.ambienttalk"
+    },
+    {
+      "match": "\\(|\\)",
+      "name": "meta.brace.round.ambienttalk"
+    }
+  ],
+  "repository": {
+    "canArguments": {
+      "captures": {
+        "1": {
+          "name": "variable.parameter.ambienttalk"
+        }
+      },
+      "matches": "(@[a-zA-Z_?]+|[a-zA-Z_?]+)"
+    },
+    "defCanonical": {
+      "begin": "([a-zA-Z_?]+)\\(",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.ambienttalk"
+        }
+      },
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "#canArguments"
+        }
+      ]
+    },
+    "defKeyworded": {
+      "captures": {
+        "1": {
+          "name": "entity.name.function.ambienttalk"
+        }
+      },
+      "match": "([a-zA-Z_?]+:)"
+    }
+  },
+  "scopeName": "source.at",
+  "uuid": "A7894005-D8F2-449C-AC7E-EF04922A6D18"
+}

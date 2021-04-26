@@ -1,0 +1,34 @@
+{
+    "name": "ambienttalk",
+    "displayName": "AmbientTalk",
+    "description": "Syntax highlighting for AmbientTalk",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "ambienttalk",
+                "aliases": [
+                    "AmbientTalk",
+                    "ambienttalk"
+                ],
+                "extensions": [
+                    ".at"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ambienttalk",
+                "scopeName": "source.at",
+                "path": "./syntaxes/ambienttalk.tmLanguage.json"
+            }
+        ]
+    }
+}
