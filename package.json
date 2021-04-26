@@ -1,6 +1,11 @@
 {
     "name": "ambienttalk",
+    "publisher": "Aaron-Munsters",
     "displayName": "AmbientTalk",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aaronmunsters/ambienttalk-vscode"
+    },
     "description": "Syntax highlighting for AmbientTalk",
     "version": "0.0.1",
     "engines": {
